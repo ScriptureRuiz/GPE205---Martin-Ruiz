@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 // this component is abstract and can only be inherited from
-public abstract class MasterController : MonoBehaviour
+public abstract class MasterPawn : MonoBehaviour
 {
     //This variable holds the move speed of the pawn
     public float moveSpeed;
