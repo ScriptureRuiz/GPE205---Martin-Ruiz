@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// this code creates a pawn class called TankPawn an inherits from the MasterPawn class
-public class TankPawn : MasterPawn
+// this code creates a pawn class called TankPawn that inherits from the MasterPawn class
+public class TankPawn : MainPawn
 {
     // Start is called before the first frame update
-    // This code overrides the start function
+    // This code overrides the start function within the "parent" class MainPawn
     public override void Start()
     {
         base.Start();
@@ -17,7 +17,7 @@ public class TankPawn : MasterPawn
     {
         base.Start();
     }
-    // The following code overrides the MasterPawn and runs a Test Stub
+    // The following code overrides the movement functions within the "parent" class called MainPawn and runs a Test Stub
     public override void MoveForward()
         {
         Debug.Log ("Move Forward");
