@@ -16,25 +16,60 @@ public class TankPawn : MainPawn
     public override void Update()
     {
         base.Start();
+
     }
-    // The following code overrides the movement functions within the "parent" class called MainPawn and runs a Test Stub
+
+
+    // The following code overrides the movement functions within the "parent" class called MainPawn 
     public override void MoveForward()
         {
-        Debug.Log ("Move Forward");
+        if (mover != null)
+        {
+            mover.Move(transform.forward, moveSpeed);
         }
+        else
+        {
+            Debug.LogWarning("Warning:No Mover in Tank.MoveForward");
+        }
+        }
+
+
     public override void MoveBackward()
         {
-        Debug.Log("Move Backward");
+        if (mover != null)
+        {
+            mover.Move(transform.forward, -moveSpeed);
         }
+        else
+        {
+            Debug.LogWarning("Warning: No Mover in Tank.MoveBackward");
+        }
+        }
+
+
     public override void RotateClockwise()
         {
-        Debug.Log("Rotate Clockwise");
-
+        if (mover != null)
+        {
+            mover.Rotate(Vector3.up, turnSpeed);
         }
+        else
+        {
+            Debug.LogWarning("Warning: No Mover in Tank.RotateClockwise");
+        }
+        }
+
+
         public override void RotateCounterClockwise()
         {
-        Debug.Log("Rotate Counter-Clockwise");
-
+        if (mover != null)
+        {
+            mover.Rotate(Vector3.up, -turnSpeed);
+        }
+        else 
+            {
+            Debug.LogWarning("Warning: No Mover in Tank.CounterClockwise");
+            }
         }
 
 

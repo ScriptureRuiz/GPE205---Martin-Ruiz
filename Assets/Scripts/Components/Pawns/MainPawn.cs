@@ -9,11 +9,14 @@ public abstract class MainPawn : MonoBehaviour
     public float moveSpeed;
     // Variable for turn speed
     public float turnSpeed;
+    // Variable for the mover
+    public MainMover mover;
 
     // Start is called before the first frame update
     // The start and update functions are "virtual" so we can override them within the child classes.
     public virtual void Start()
     {
+        mover = GetComponent<MainMover>();
     }
 
     // Update is called once per frame

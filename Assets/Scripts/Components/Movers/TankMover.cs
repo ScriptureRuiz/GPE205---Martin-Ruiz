@@ -8,6 +8,13 @@ public class TankMover : MainMover
     // this variable is private and is only accessed by this object
     private Rigidbody rb;
 
+    public float turnSpeed;
+
+    public float speed;
+
+    private Vector3 rotateVector;
+
+
     // Start is called before the first frame update
     // Overrides the start function within the MainMover component
     public override void Start()
@@ -24,10 +31,15 @@ public class TankMover : MainMover
 
         // Here we call our variable to move positions with the parameters (rb.position+moveVector)
         rb.MovePosition(rb.position+moveVector);
-
     }
 
+    public override void Rotate(Vector3 up, float turnSpeed)
+    {
+        Vector3 rotateVector = up.normalized * turnSpeed * Time.deltaTime;
 
+       rb.MovePosition(rb.position+rotateVector);
+
+    }
 
 
 
