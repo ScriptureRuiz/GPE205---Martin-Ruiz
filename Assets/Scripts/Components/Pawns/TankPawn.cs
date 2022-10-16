@@ -51,7 +51,7 @@ public class TankPawn : MainPawn
         {
         if (mover != null)
         {
-            mover.Rotate(Vector3.up, turnSpeed);
+            mover.Rotate(turnSpeed);
         }
         else
         {
@@ -64,7 +64,7 @@ public class TankPawn : MainPawn
         {
         if (mover != null)
         {
-            mover.Rotate(Vector3.up, -turnSpeed);
+            mover.Rotate(-turnSpeed);
         }
         else 
             {
