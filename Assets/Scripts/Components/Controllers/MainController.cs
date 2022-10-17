@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // This code creats an abstract class component "MonoBehaviour" called MainController
+// The [System.Serializable], allows us to expose this to the inspector
+[System.Serializable]
 public abstract class MainController : MonoBehaviour
 {
     // This is a public variable called MainPawn that holds our pawn values
