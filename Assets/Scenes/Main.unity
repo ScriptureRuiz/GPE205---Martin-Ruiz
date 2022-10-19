@@ -538,7 +538,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 547419367}
   m_LocalRotation: {x: -0, y: -0.7072037, z: -0, w: 0.70701}
-  m_LocalPosition: {x: -21.22, y: -15.51, z: -14.42}
+  m_LocalPosition: {x: -21.5, y: -14.77, z: -14.42}
   m_LocalScale: {x: 52.2167, y: 6.14742, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1092,7 +1092,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpawnTransform: {fileID: 888758417}
-  players: []
+  players:
+  - {fileID: 6809172598889237861, guid: a9365bc4d32456a4fa68a94eb7839b74, type: 3}
   PlayerControllerPrefab: {fileID: 6809172598889237863, guid: a9365bc4d32456a4fa68a94eb7839b74, type: 3}
   TankPawnPrefab: {fileID: 241007890650328572, guid: f5f5d2b4a5162994082adc41994ebf52, type: 3}
 --- !u!4 &1507953778
