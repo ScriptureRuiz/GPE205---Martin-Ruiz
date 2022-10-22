@@ -152,7 +152,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7777690351982746358, guid: aa5c0838d5c15b8409d7ba8c5631fd29, type: 3}
   fireForce: 1000
   damageDealt: 50
-  bulletLifespan: 1
+  bulletLifespan: 2
 --- !u!114 &-3603504373368957075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd838df17dc16e47ab5bc14418d6f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firepointTransform: {fileID: 3166735085234681620, guid: fa425c0fc8cd0404584c7bca7a0144bc, type: 3}
+  firepointTransform: {fileID: 7254939727782369608}
 --- !u!114 &7994145712992240912
 MonoBehaviour:
   m_ObjectHideFlags: 0

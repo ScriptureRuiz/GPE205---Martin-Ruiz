@@ -30,14 +30,19 @@ public  class TankShooter : Shooter
     public override void Shoot(GameObject bulletPrefab, float fireForce, float damageDealt, float bulletLifespan)
     {
     
-        //attaches the RigidBody component to the "rb" variable
-        Rigidbody bulletRig = bulletPrefab.GetComponent<Rigidbody>();
+        
 
         /*Instantiate is a copy of Prefab GameObjects and uses three parameters
        1. Prefab, 2.position. rotation
        The position and rotation will be the firepoint.*/
         GameObject newBullet = Instantiate(bulletPrefab, firepointTransform.position, firepointTransform.rotation) as GameObject;
         Debug.Log(newBullet.name+damageDealt);
+
+
+
+//attaches the newBullet RigidBody component to the "bulletRig" variable
+        Rigidbody bulletRig = newBullet.GetComponent<Rigidbody>();
+
 
 // Checks if there is a Rigidbody
         if (bulletRig != null)
