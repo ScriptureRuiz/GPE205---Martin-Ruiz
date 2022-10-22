@@ -5,6 +5,12 @@ using UnityEngine;
 // this code creates a pawn class called TankPawn that inherits from the MasterPawn class
 public class TankPawn : MainPawn
 {
+    public GameObject bulletPrefab;
+   public float fireForce;
+   public float damageDealt;
+   public float bulletLifespan;
+    
+
     // Start is called before the first frame update
     // This code overrides the start function within the "parent" class MainPawn
     public override void Start()
@@ -72,5 +78,11 @@ public class TankPawn : MainPawn
             }
         }
 
-
+    public override void Shoot()
+    {
+        if (shooter !=null)
+        { 
+        shooter.Shoot(bulletPrefab, fireForce, damageDealt, bulletLifespan);
+        }
+    }
 }

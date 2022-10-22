@@ -11,6 +11,7 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
      void Start()
     {
+        // Start with max health
         currentHealth = maxHealth;
     }
 
@@ -22,12 +23,12 @@ public class Health : MonoBehaviour
     }
 
     // This function deals with the "amount" of damage taken and the source of that damage
-    void TakeDamage(float amount, MainPawn source)
+    public void TakeDamage(float damageDealt, MainPawn source)
     {
         // The damage taken
-        currentHealth = currentHealth - amount;
+        currentHealth = currentHealth - damageDealt;
         // A message for testing puposes that tells who shot who and done what damage
-        Debug.Log(source.name + "did" + amount + "damage to"+gameObject.name);
+        Debug.Log(source.name + "did" + damageDealt + "damage to"+gameObject.name);
          /* This is a clamp that keeps the currenHealth from going out of range when taking damage
           *The first parameter is the target Health, the second is the lowest value in range , and
           *the third is the highest value in range*/
@@ -41,16 +42,16 @@ public class Health : MonoBehaviour
 
     }
     // this function handles the death of the object
-    void Die(MainPawn source)
+    public void Die(MainPawn source)
     {
         Destroy(gameObject);
     }
 
     // This function handles healing
-    void Heal(float amount,MainPawn source)
+    public void Heal(float healingGained,MainPawn source)
     {
-        currentHealth = currentHealth + amount;
-        Debug.Log(gameObject.name + "Healed" + amount);
+        currentHealth = currentHealth + healingGained;
+        Debug.Log(gameObject.name + "Healed" + healingGained);
 
       // A clamp to limit the range of healing to the max value
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);

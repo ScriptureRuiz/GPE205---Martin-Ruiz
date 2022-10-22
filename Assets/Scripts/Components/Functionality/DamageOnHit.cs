@@ -19,7 +19,7 @@ public class DamageOnHit : MonoBehaviour
         if (otherHealth != null)
         {
             // Deals damage to the object that it collided with
-            otherHealth.TakeDamage(damageDone, owner)
+            otherHealth.TakeDamage(damageDealt, owner);
 
         }
         // Destroys itself whether it did damage or not

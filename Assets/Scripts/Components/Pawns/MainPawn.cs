@@ -12,12 +12,23 @@ public abstract class MainPawn : MonoBehaviour
     // Variable for the mover
     public MainMover mover;
 
+    //The following variabls are for the shooter
+    public Shooter shooter;
+    
+
+
+
     // Start is called before the first frame update
     // The start and update functions are "virtual" so we can override them within the child classes.
     public virtual void Start()
     {
+        // This grabs the MainMover component
         mover = GetComponent<MainMover>();
+        // This grabs the shooter component
+        shooter = GetComponent<Shooter>();
+
     }
+
 
     // Update is called once per frame
     public virtual void Update()
@@ -28,4 +39,6 @@ public abstract class MainPawn : MonoBehaviour
     public abstract void MoveBackward();
     public abstract void RotateClockwise();
     public abstract void RotateCounterClockwise();
+
+    public abstract void Shoot();
 }

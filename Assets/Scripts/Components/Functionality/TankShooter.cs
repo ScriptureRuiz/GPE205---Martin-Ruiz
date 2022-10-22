@@ -4,10 +4,20 @@ using UnityEngine;
 
 public  class TankShooter : Shooter
 {
+    //holds the bullet Rigidbody
+    private Rigidbody bulletRig;
+
+    // this is a variable that holds the firePoint transform as a bullet spawning location
+     public Transform firepointTransform;
+
+   
+
+
+
     // Start is called before the first frame update
     public  override void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
@@ -15,4 +25,47 @@ public  class TankShooter : Shooter
     {
         
     }
+
+
+    public override void Shoot(GameObject bulletPrefab, float fireForce, float damageDealt, float bulletLifespan)
+    {
+    
+        //attaches the RigidBody component to the "rb" variable
+        Rigidbody bulletRig = bulletPrefab.GetComponent<Rigidbody>();
+
+        /*Instantiate is a copy of Prefab GameObjects and uses three parameters
+       1. Prefab, 2.position. rotation
+       The position and rotation will be the firepoint.*/
+        GameObject newBullet = Instantiate(bulletPrefab, firepointTransform.position, firepointTransform.rotation) as GameObject;
+        Debug.Log(newBullet.name+damageDealt);
+
+// Checks if there is a Rigidbody
+        if (bulletRig != null)
+        {
+            // Applies force to the bullet Rigidbody using the Transform.forward command times the fireforce variable
+            bulletRig.AddForce(firepointTransform.forward * fireForce);
+
+        // Grabs the damagOnHit component from the bullet
+        DamageOnHit damageComponent = newBullet.GetComponent<DamageOnHit>();
+        if (damageComponent != null)
+        {
+            damageComponent.damageDealt = damageDealt;
+            damageComponent.owner = GetComponent<MainPawn>();
+        }
+
+        
+
+ // Destroy the bullet after the set lifespan
+        Destroy(newBullet, bulletLifespan);
+       
+        
+        }
+
+       
+
+
+    }
+
+
+
 }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6809172598889237863
+--- !u!1 &7810370110807216272
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,45 +8,43 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6809172598889237860}
-  - component: {fileID: 6809172598889237861}
+  - component: {fileID: 7810370110807216274}
+  - component: {fileID: 7810370110807216275}
   m_Layer: 0
-  m_Name: PlayerController
+  m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6809172598889237860
+--- !u!4 &7810370110807216274
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6809172598889237863}
+  m_GameObject: {fileID: 7810370110807216272}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.264605, y: -12.823, z: -20.378891}
+  m_LocalPosition: {x: -13.369168, y: -30.711044, z: -38.756104}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6809172598889237861
+--- !u!114 &7810370110807216275
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6809172598889237863}
+  m_GameObject: {fileID: 7810370110807216272}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a63eca6212f57b64c933bb09dc767fb7, type: 3}
+  m_Script: {fileID: 11500000, guid: 296d2b394a985dd4c93093e2b29c068c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pawn: {fileID: 0}
-  moveForwardKey: 119
-  moveBackwardKey: 115
-  rotateClockwiseKey: 100
-  rotateCounterClockwiseKey: 97
-  shootKey: 101
+  playerSpawnTransform: {fileID: 0}
+  players: []
+  PlayerControllerPrefab: {fileID: 6809172598889237863, guid: a9365bc4d32456a4fa68a94eb7839b74, type: 3}
+  TankPawnPrefab: {fileID: 241007890650328572, guid: f5f5d2b4a5162994082adc41994ebf52, type: 3}
