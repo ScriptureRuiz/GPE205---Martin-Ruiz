@@ -12,9 +12,8 @@ public abstract class MainPawn : MonoBehaviour
     // Variable for the mover
     public MainMover mover;
 
-    //The following variabls are for the shooter
+    //The following variable is for the shooter
     public Shooter shooter;
-    
 
 
 
@@ -26,7 +25,7 @@ public abstract class MainPawn : MonoBehaviour
         mover = GetComponent<MainMover>();
         // This grabs the shooter component
         shooter = GetComponent<Shooter>();
-
+       
     }
 
 
