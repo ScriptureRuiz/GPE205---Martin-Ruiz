@@ -45,7 +45,7 @@ public class AIController : MainController
                 case AIState.Idle:
                 DoIdleState();
 
-                if (IsDistanceLessThan = true)
+                if (IsDistanceLessThan(target,10))
                 {
                     ChangeState(AIState.Chase);
                 }
@@ -187,19 +187,14 @@ public class AIController : MainController
        
         if (Vector3.Distance(pawn.transform.position, target.transform.position) <distance)
         {
-
-
             return true;
-            
-            
-
         }
         else
         {
             return false;
         }
         
-        ChangeState(AIState.Chase);
+        
        
     }
 
