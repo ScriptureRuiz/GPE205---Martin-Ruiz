@@ -38,6 +38,24 @@ public abstract class MainPawn : MonoBehaviour
     public abstract void MoveBackward();
     public abstract void RotateClockwise();
     public abstract void RotateCounterClockwise();
-
     public abstract void Shoot();
+
+
+    // A.I functionality
+    public abstract void RotateTowards(Vector3 targetPosition);
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

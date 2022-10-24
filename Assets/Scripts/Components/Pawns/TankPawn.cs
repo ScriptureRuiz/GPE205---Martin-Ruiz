@@ -74,7 +74,7 @@ public class TankPawn : MainPawn
         }
 
 
-        public override void RotateCounterClockwise()
+    public override void RotateCounterClockwise()
         {
         if (mover != null)
         {
@@ -85,6 +85,7 @@ public class TankPawn : MainPawn
             Debug.LogWarning("Warning: No Mover in Tank.CounterClockwise");
             }
         }
+
 
     public override void Shoot()
     { 
@@ -103,4 +104,45 @@ public class TankPawn : MainPawn
            nextFire = Time.time+1/fireRate;
             
     }   }
+
+    // This handls the AI movement towards a target
+    public override void RotateTowards(Vector3 targetPosition)
+    {
+        // Finds the vector difference between two points, the target and this objects transform
+        Vector3 vectorToTarget = targetPosition - transform.position;
+
+
+        // Finds the rotation to look down that vector
+        Quaternion targetRotation = Quaternion.LookRotation(vectorToTarget, Vector3.up);
+
+        /* We tell our AI to rotate towards the target at the turn speed rather than immediately
+         We rotate towards the target starting with the transform rotation
+        Then we find our target location
+        Finally we give it the turnspeed and establish framerate independance*/
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
+
+
+
+
+    }
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
