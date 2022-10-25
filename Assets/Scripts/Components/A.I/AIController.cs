@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class AIController : MainController
 {
-    public float distance;
+    public float fleeDistance;
    
 
     // Stores all the possible states of the A.I as "enums"
     public enum AIState
     {
-        Idle, Patrol, Scan, Chase, Attack, Flee
+        Guard, Patrol, Scan, Chase, Attack, Flee
     }
 
     // store the current state of the A.I
@@ -20,11 +20,7 @@ public class AIController : MainController
  // Stores the last recorded time that the A.I changed states
     private float lastStateChangeTime;
 
-
-
-
-
-    // Start is called before the first frame update
+// Start is called before the first frame update
     public override void Start()
     {
         base.Start();
@@ -32,57 +28,58 @@ public class AIController : MainController
        
 
     }
-
-
-    // Update is called once per frame
-    public override void Update()
+    // The Decision Maker
+    public void MakeDecisions()
     {
-       
-        base.Update();
+        switch (currentState)
+        {
+            case AIState.Guard:
+                DoGuardState();
 
-            switch (currentState)
-                {
-                case AIState.Idle:
-                DoIdleState();
-
-                if (IsDistanceLessThan(target,10))
+                if (IsDistanceLessThan(target, 10))
                 {
                     ChangeState(AIState.Chase);
                 }
-                   
 
                 break;
 
-                case AIState.Patrol:
+            case AIState.Patrol:
                 DoPatrolState();
                 break;
 
-                case AIState.Scan: 
+            case AIState.Scan:
                 DoScanState();
                 break;
-                
-                case  AIState.Chase:
+
+            case AIState.Chase:
                 DoChaseState();
-                    
+                if (!IsDistanceLessThan(target, 10))
+                {
+                    ChangeState(AIState.Guard);
+                }
                 break;
 
-                case AIState.Attack:
+            case AIState.Attack:
                 DoAttackState();
                 break;
 
-                case AIState.Flee:
+            case AIState.Flee:
                 DoFleeState();
                 break;
 
-                default:ChangeState(AIState.Idle);
+            default:
+                ChangeState(AIState.Guard);
                 break;
+        }
 
-               
-                }
-        
+    }
+    // Update is called once per frame
+    public override void Update()
+    {
+        base.Update();
 
-
-
+        MakeDecisions();
+   
     }
 
 
@@ -90,6 +87,12 @@ public class AIController : MainController
     {
 
     }
+
+
+
+
+
+    
 
     
 
@@ -105,59 +108,60 @@ public class AIController : MainController
     }
 
     // These are the states that our AI goes into
-    public void DoIdleState()
+    protected virtual void DoGuardState()
     {
-        Idle();
+        Guard();
     }
 
-    public void DoPatrolState()
+    protected virtual void DoPatrolState()
     {
-
-    }
-
-    public void DoScanState()
-    {
-
 
     }
 
-    public void DoChaseState()
+    protected virtual void DoScanState()
+    {
+
+
+    }
+
+    protected virtual void DoChaseState()
     { 
     
          // Seeks out the target
             Seek(target);          
-         
+         Attack();
     }
 
-    public void DoAttackState()
+    protected virtual void DoAttackState()
     {
 
     }
 
-    public void DoFleeState()
+    protected virtual void DoFleeState()
     {
-
+        Flee();
     }
 
 
 
     // These are the Action functions of our states
-    public void Idle()
+    protected virtual void Guard()
     {
         Debug.Log("Im Idle");
     }
 
-    public void Patrol()
+    protected virtual void Patrol()
     {
 
     }
 
-    public void Scan()
+    protected virtual void Scan()
     {
 
     }
 
-    public void Seek(GameObject target)
+        //Polymorphism.base- Seeks the target object
+    public  void Seek(GameObject target)
     {
  
         // Rotates towards the target and grabs the targets transform and position
@@ -167,23 +171,56 @@ public class AIController : MainController
         pawn.MoveForward();
     }
 
+        //PolyMorphism-Seeks the target transform
+    public void Seek(Transform targetTransform)
+    {
+        Seek(targetTransform.transform);
+
+    }
+
+        //Polymorphism- Seeks the target pawn
+    public void Seek(MainPawn targetPawn)
+    {
+
+        Seek(targetPawn.transform);
+    }
+
+    //Polymorphism- seeks target controller
+    //public  void Seek(Controller targetController)
+    //{ 
+    //    Seek(targetController.Controller);
+    //}
+
+    // Attacks the target
     public void Attack()
     {
-
+        //Shoot function
+        pawn.Shoot();
     }
-
-    public void Flee()
+        // Flees the target
+    protected void Flee()
     {
+             // Finds the distance to the target
+        Vector3 distanceToTarget = target.transform.position - pawn.transform.position;
+
+             // Finds the vector away from our target by multiplying by -1
+        Vector3 vectorAwayFromTarget = -distanceToTarget;
+            // Find the vector we would travel down in order to flee
+        Vector3 fleeVector = vectorAwayFromTarget.normalized * fleeDistance;
+            // Seeks the fleevector point away from the targets position
+        Seek(pawn.transform.position + fleeVector);
+
+
 
     }
 
 
 
-    // These are the Transition methods to our states
+        // These are the Transition methods to our states
      protected bool IsDistanceLessThan(GameObject target, float distance)
     {
-        /* If the distance between this objects transform position and the targets transform position
-         is less than the distance value then return true */
+            /* If the distance between this objects transform position and the targets transform position
+             is less than the distance value then return true */
        
         if (Vector3.Distance(pawn.transform.position, target.transform.position) <distance)
         {
