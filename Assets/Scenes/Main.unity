@@ -249,10 +249,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 269f31ff69eaa304fbf2d0563c643b39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pawn: {fileID: 0}
-  distance: 0
-  currentState: 0
+  pawn: {fileID: 1969527481}
   target: {fileID: 0}
+  fleeDistance: 0
+  targetPosition: {x: 0, y: 0, z: 0}
+  targetTransform: {fileID: 0}
+  targetPawn: {fileID: 0}
+  targetController: {fileID: 0}
+  currentState: 0
 --- !u!4 &370752815
 Transform:
   m_ObjectHideFlags: 0
@@ -261,7 +265,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 370752813}
   m_LocalRotation: {x: -0, y: -0.9510216, z: -0, w: 0.30912435}
-  m_LocalPosition: {x: 7.5843353, y: -25.629076, z: -11.571032}
+  m_LocalPosition: {x: 2.07, y: -25.629076, z: -19.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -932,6 +936,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1969527481 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1124020530795139234, guid: f5f5d2b4a5162994082adc41994ebf52, type: 3}
+  m_PrefabInstance: {fileID: 933845979}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96b2e7424cb8fa0429b74c26f3cf2ec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7810370111856727028
 PrefabInstance:
   m_ObjectHideFlags: 0

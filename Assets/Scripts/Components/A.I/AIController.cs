@@ -3,9 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AIController : MainController
+
 {
+    // Target that the ai attacks
+    public GameObject target;
     public float fleeDistance;
-   
+
+
+    // All seek() variables
+   public Vector3 targetPosition;
+   public Transform targetTransform;
+    public MainPawn targetPawn;
+    public MainController targetController;
+
 
     // Stores all the possible states of the A.I as "enums"
     public enum AIState
@@ -15,7 +25,7 @@ public class AIController : MainController
 
     // store the current state of the A.I
     public AIState currentState;
-    public GameObject target;
+    
 
  // Stores the last recorded time that the A.I changed states
     private float lastStateChangeTime;
@@ -29,7 +39,7 @@ public class AIController : MainController
 
     }
     // The Decision Maker
-    public void MakeDecisions()
+    public virtual void MakeDecisions()
     {
         switch (currentState)
         {
@@ -161,7 +171,7 @@ public class AIController : MainController
     }
 
         //Polymorphism.base- Seeks the target object
-    public  void Seek(GameObject target)
+    public virtual  void Seek(GameObject target)
     {
  
         // Rotates towards the target and grabs the targets transform and position
@@ -171,10 +181,18 @@ public class AIController : MainController
         pawn.MoveForward();
     }
 
-        //PolyMorphism-Seeks the target transform
-    public void Seek(Transform targetTransform)
+    public void Seek(Vector3 targetPosition)
     {
-        Seek(targetTransform.transform);
+        // Rotates towards the target position
+        pawn.RotateTowards(targetPosition);
+        // Moves forward
+        pawn.MoveForward();
+    }
+
+        //PolyMorphism-Seeks the target transform
+    public  void Seek(Transform targetTransform)
+    {
+       Seek(targetTransform.transform);
 
     }
 
@@ -186,13 +204,15 @@ public class AIController : MainController
     }
 
     //Polymorphism- seeks target controller
-    //public  void Seek(Controller targetController)
-    //{ 
-    //    Seek(targetController.Controller);
-    //}
+   public  void Seek(MainController targetController)
+   {
+       Seek(targetController.pawn); 
+            
+
+   }
 
     // Attacks the target
-    public void Attack()
+    protected void Attack()
     {
         //Shoot function
         pawn.Shoot();
@@ -204,11 +224,11 @@ public class AIController : MainController
         Vector3 distanceToTarget = target.transform.position - pawn.transform.position;
 
              // Finds the vector away from our target by multiplying by -1
-        Vector3 vectorAwayFromTarget = -distanceToTarget;
+        Vector3 vectorAwayFromTarget = - distanceToTarget;
             // Find the vector we would travel down in order to flee
         Vector3 fleeVector = vectorAwayFromTarget.normalized * fleeDistance;
             // Seeks the fleevector point away from the targets position
-        Seek(pawn.transform.position + fleeVector);
+       Seek(targetTransform.transform.position + fleeVector);
 
 
 

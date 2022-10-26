@@ -27,12 +27,15 @@ public class Health : MonoBehaviour
     {
         // The damage taken
         currentHealth = currentHealth - damageDealt;
+
         // A message for testing puposes that tells who shot who and done what damage
         Debug.Log(source.name + "did" + damageDealt + "damage to"+gameObject.name);
+
          /* This is a clamp that keeps the currenHealth from going out of range when taking damage
           *The first parameter is the target Health, the second is the lowest value in range , and
           *the third is the highest value in range*/
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
         /*A conditional statement to check if the current health
         is zero or less, then it runs the Die() functiond*/
         if (currentHealth<=0)

@@ -51,8 +51,10 @@ public class TankShooter : Shooter
 
                 // Grabs the damagOnHit component from the bullet
                 DamageOnHit damageComponent = newBullet.GetComponent<DamageOnHit>();
+
                 if (damageComponent != null)
                 {
+                // applys the damage
                     damageComponent.damageDealt = damageDealt;
                     damageComponent.owner = GetComponent<MainPawn>();
                 }
