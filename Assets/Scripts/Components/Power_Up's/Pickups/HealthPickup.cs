@@ -29,7 +29,7 @@ public class HealthPickup : MonoBehaviour
     }
 
 
-    // Has the PowerupManager add the powerup that is assosiated with this pickup
+    // The PowerupManager adds the powerup that is assosiated with this pickup
     public void OnTriggerEnter(Collider other)
     {
         // This variable stores the other objects Powerup controller
@@ -40,7 +40,7 @@ public class HealthPickup : MonoBehaviour
         {
             // Adds the powerup 
             powerupManager.Add(powerup);
-
+            Debug.Log("It should destroy");
             // Destroys the powerup
             Destroy(gameObject);
         }

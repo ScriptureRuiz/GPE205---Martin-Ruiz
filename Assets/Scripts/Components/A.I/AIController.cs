@@ -157,7 +157,7 @@ public class AIController : MainController
     // These are the Action functions of our states
     protected virtual void Guard()
     {
-        Debug.Log("Im Idle");
+        
     }
 
     protected virtual void Patrol()
