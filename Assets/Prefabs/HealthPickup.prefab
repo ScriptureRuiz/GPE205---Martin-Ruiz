@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 5081843146619109360}
   - component: {fileID: 5856861818879648631}
   - component: {fileID: 5856861818879648630}
-  - component: {fileID: 4387749251537296617}
+  - component: {fileID: -6743124496233802996}
+  - component: {fileID: 3227306130438630944}
   m_Layer: 0
   m_Name: HealthPickup
   m_TagString: Untagged
@@ -113,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerup:
     healthGained: 0
---- !u!114 &4387749251537296617
+--- !u!114 &-6743124496233802996
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,9 +123,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 6739259825581170213}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04c2aa4f86ca6384e9a9c6d234cdef24, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c93750bca8564e44a3ea978756368a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounceSpeed: 8
-  bounceAmplitude: 0.05
-  rotationSpeed: 90
+  turnSpeed: 100
+--- !u!54 &3227306130438630944
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6739259825581170213}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
