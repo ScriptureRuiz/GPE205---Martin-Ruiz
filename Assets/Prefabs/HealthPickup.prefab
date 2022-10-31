@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerup:
-    healthGained: 0
+    healthGained: 50
 --- !u!114 &-6743124496233802996
 MonoBehaviour:
   m_ObjectHideFlags: 0

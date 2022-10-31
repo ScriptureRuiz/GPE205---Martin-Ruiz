@@ -46,7 +46,7 @@ public class AIController : MainController
             case AIState.Guard:
                 DoGuardState();
 
-                if (IsDistanceLessThan(target, 10))
+                if (IsDistanceLessThan(target, 15))
                 {
                     ChangeState(AIState.Chase);
                 }
@@ -65,14 +65,22 @@ public class AIController : MainController
                 DoChaseState();
                 if (!IsDistanceLessThan(target, 10))
                 {
-                    ChangeState(AIState.Guard);
+                   ChangeState(AIState.Guard);
+                }
+                else if (IsDistanceLessThan(target, 5))
+                {
+                    ChangeState(AIState.Attack);
                 }
                 break;
 
             case AIState.Attack:
                 DoAttackState();
-                break;
+                if (!IsDistanceLessThan(target, 5))
+                {
+                    ChangeState(AIState.Chase);
+                }
 
+                break;
             case AIState.Flee:
                 DoFleeState();
                 break;
@@ -138,13 +146,14 @@ public class AIController : MainController
     { 
     
          // Seeks out the target
-            Seek(target);          
-         Attack();
+            Seek(target);
+      
+         
     }
 
     protected virtual void DoAttackState()
     {
-
+        pawn.Shoot();
     }
 
     protected virtual void DoFleeState()

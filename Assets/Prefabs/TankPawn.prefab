@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 100
-  turnSpeed: 360
+  turnSpeed: 100
   mover: {fileID: 1124020530795139233}
   shooter: {fileID: -3603504373368957075}
   bulletPrefab: {fileID: 7777690351982746358, guid: aa5c0838d5c15b8409d7ba8c5631fd29, type: 3}
@@ -181,8 +181,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76e7c2b83a59a334e89cf5681e10267a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 100
-  maxHealth: 100
+  currentHealth: 200
+  maxHealth: 200
 --- !u!114 &724485894154820358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,14 +220,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6165892367419857148}
-  m_LocalRotation: {x: 0.05778297, y: -0, z: -0, w: 0.99832916}
-  m_LocalPosition: {x: 0.006000042, y: 2.0830002, z: -3.3029995}
+  m_LocalRotation: {x: -0.14529596, y: -0.004730941, z: 0.00064569345, w: -0.9893768}
+  m_LocalPosition: {x: 0.0071897507, y: 1.6075783, z: -0.7715759}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 582068033249818438}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 6.625, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 28.404, y: -1.341, z: 0.006}
 --- !u!20 &4089233367230042695
 Camera:
   m_ObjectHideFlags: 0
@@ -253,7 +253,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 63.4
   orthographic: 0
   orthographic size: 5
   m_Depth: 0

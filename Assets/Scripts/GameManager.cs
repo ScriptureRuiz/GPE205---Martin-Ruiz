@@ -4,6 +4,14 @@ using UnityEngine;
  // Singleton GameManager
 public class GameManager : MonoBehaviour
 {
+    public int spawnCount;
+
+    public int maxSpawn;
+
+
+
+
+
     /*Here we create a GameManager variable called instances.
      Static means that we can access our single instance of the class from anywhere.
      This variable will point back at this component when storing data in this variable */
@@ -62,7 +70,13 @@ public class GameManager : MonoBehaviour
 
 
 
+    public void SpawnPickups()
+    {
+        if (spawnCount == maxSpawn)
+        {
 
+        }
+    }
 
 
 
@@ -74,7 +88,7 @@ public class GameManager : MonoBehaviour
  //Prefabs
     public GameObject PlayerControllerPrefab;
     public GameObject TankPawnPrefab;
-    
+    public GameObject PickupSpawner;
        
 
     
