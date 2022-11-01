@@ -149,10 +149,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 623043512}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5180133ad60442469f2935afe50c3d9, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d0a559dfa84a6f4ebad4f3c4481b469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  theText: Hello World
+  roomGridPrefabs:
+  - {fileID: 7333277048814310489, guid: 673db17700fa4ed4d84e72bbb34cd9ac, type: 3}
+  - {fileID: 1751734784824971829, guid: 9cb51829342004e4e992af5f8ba81733, type: 3}
+  - {fileID: 6640640207229324910, guid: 8c7226bb2abf9d44ba0aa57f7d81c639, type: 3}
+  - {fileID: 8003877717448795055, guid: 59e80b184fdc77a428556557de4579f7, type: 3}
+  rows: 4
+  columns: 4
 --- !u!4 &623043514
 Transform:
   m_ObjectHideFlags: 0

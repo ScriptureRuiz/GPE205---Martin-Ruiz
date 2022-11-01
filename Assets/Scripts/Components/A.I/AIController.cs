@@ -1,20 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class AIController : MainController
 
 {
     // Target that the ai attacks
     public GameObject target;
     public float fleeDistance;
-
+   
 
     // All seek() variables
-   public Vector3 targetPosition;
+  /* public Vector3 targetPosition;
    public Transform targetTransform;
     public MainPawn targetPawn;
-    public MainController targetController;
+    public MainController targetController;*/
 
 
     // Stores all the possible states of the A.I as "enums"
@@ -33,10 +33,16 @@ public class AIController : MainController
 // Start is called before the first frame update
     public override void Start()
     {
+        if (GameManager.instance != null)
+        {
+            // if the Gamemanager tracks an instance of the player
+            if (GameManager.instance.enemies != null)
+            {
+                // Register an instance of the player with the gamemanager (add (this))
+                GameManager.instance.enemies.Add(this);
+            }
+        }
         base.Start();
-
-       
-
     }
     // The Decision Maker
     public virtual void MakeDecisions()
@@ -190,7 +196,7 @@ public class AIController : MainController
         pawn.MoveForward();
     }
 
-    public void Seek(Vector3 targetPosition)
+   /* public void Seek(Vector3 targetPosition)
     {
         // Rotates towards the target position
         pawn.RotateTowards(targetPosition);
@@ -218,7 +224,7 @@ public class AIController : MainController
        Seek(targetController.pawn); 
             
 
-   }
+   }*/
 
     // Attacks the target
     protected void Attack()
@@ -229,7 +235,7 @@ public class AIController : MainController
         // Flees the target
     protected void Flee()
     {
-             // Finds the distance to the target
+         /*****    // Finds the distance to the target
         Vector3 distanceToTarget = target.transform.position - pawn.transform.position;
 
              // Finds the vector away from our target by multiplying by -1
@@ -237,7 +243,7 @@ public class AIController : MainController
             // Find the vector we would travel down in order to flee
         Vector3 fleeVector = vectorAwayFromTarget.normalized * fleeDistance;
             // Seeks the fleevector point away from the targets position
-       Seek(targetTransform.transform.position + fleeVector);
+       Seek(targetTransform.transform.position + fleeVector); ******/
 
 
 
@@ -259,16 +265,49 @@ public class AIController : MainController
         {
             return false;
         }
-        
-        
-       
+
+
+
+    }
+
+    public bool CanHear(GameObject target)
+    {
+        // Grab the targets noise maker
+        NoiseMaker noiseMaker = target.GetComponent<NoiseMaker>();
+        // Only senses noise if the target has a noiseMaker
+        if (noiseMaker.volumeDistance==null)
+        {
+            return false;
+        }
+       else if (noiseMaker.volumeDistance=0)
+        {
+            return false;
+        }
+        // If noise is being made then add the volumeDistance to the hearing distance of the AI
+        float totalDistance = noiseMaker.volumeDistance + hearingDistance;
+        // If within the target distance then its true we can hear
+        else if(Vector3.Distance(pawn.transform.position,target.transform.position)<=totalDistance)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
     }
 
 
-
-
-
-
+    public void OnDestroy()
+    {// Checkes for GameManager
+        if (GameManager.instance != null)
+        {//Checks for players list
+            if (GameManager.instance.enemies != null)
+            {// Removes it from the list
+                GameManager.instance.enemies.Remove(this);
+            }
+        }
+    }
 
 
 

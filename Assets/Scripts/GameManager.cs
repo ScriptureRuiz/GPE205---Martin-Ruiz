@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 
     public int maxSpawn;
 
-
+    
 
 
 
@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
        /* A variable that shows in the inspector that allows us to connect our spawner gameObject to spawn the player.
         We will also use the transform of this object for position*/
     public Transform playerSpawnTransform;
-
+    public Transform enemySpawnTransform;
      // This will run before any start() function in our game
      // Whatever code we write here will run before any object can run their start() function
     private void Awake()
@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SpawnPlayer();
+        SpawnEnemies();
     }
 
     public void SpawnPlayer()
@@ -63,9 +64,19 @@ public class GameManager : MonoBehaviour
 
     }
 
-        public void SpawnEnemies()
+       public void SpawnEnemies()
     {
-       
+
+        GameObject newEnemyObj = Instantiate(AIEnemyControllerPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+
+        GameObject newAiPawnObj = Instantiate(AITankPrefab,enemySpawnTransform.position,enemySpawnTransform.rotation) as GameObject;
+
+        AIController newAi = newEnemyObj.GetComponent<AIController>();
+        TankPawn newEnemy = newEnemyObj.GetComponent<TankPawn>();
+        newAi.pawn = newEnemy;
+
+        newAi.target = TankPawnPrefab;
+
     }
 
 
@@ -84,12 +95,12 @@ public class GameManager : MonoBehaviour
 
     // This is a list of serialized <tags> variables that hold our players
     public List<PlayerController> players;
-
+    public List<AIController> enemies;
  //Prefabs
     public GameObject PlayerControllerPrefab;
     public GameObject TankPawnPrefab;
     public GameObject PickupSpawner;
-       
-
+    public GameObject AIEnemyControllerPrefab;
+    public GameObject AITankPrefab;
     
 }
