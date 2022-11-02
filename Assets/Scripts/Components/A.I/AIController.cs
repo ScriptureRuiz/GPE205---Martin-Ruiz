@@ -8,7 +8,7 @@ public class AIController : MainController
     // Target that the ai attacks
     public GameObject target;
     public float fleeDistance;
-   
+    public float hearingDistance;
 
     // All seek() variables
   /* public Vector3 targetPosition;
@@ -51,16 +51,20 @@ public class AIController : MainController
         {
             case AIState.Guard:
                 DoGuardState();
-
-                if (IsDistanceLessThan(target, 15))
+               if( CanHear(target));
                 {
                     ChangeState(AIState.Chase);
                 }
+                //if (IsDistanceLessThan(target, 15))
+               // {
+               //     ChangeState(AIState.Chase);
+               // }
 
                 break;
 
             case AIState.Patrol:
                 DoPatrolState();
+
                 break;
 
             case AIState.Scan:
@@ -73,7 +77,7 @@ public class AIController : MainController
                 {
                    ChangeState(AIState.Guard);
                 }
-                else if (IsDistanceLessThan(target, 5))
+                else if (IsDistanceLessThan(target, 10))
                 {
                     ChangeState(AIState.Attack);
                 }
@@ -172,7 +176,7 @@ public class AIController : MainController
     // These are the Action functions of our states
     protected virtual void Guard()
     {
-        
+         
     }
 
     protected virtual void Patrol()
@@ -275,18 +279,18 @@ public class AIController : MainController
         // Grab the targets noise maker
         NoiseMaker noiseMaker = target.GetComponent<NoiseMaker>();
         // Only senses noise if the target has a noiseMaker
-        if (noiseMaker.volumeDistance==null)
+        if (noiseMaker==null)
         {
             return false;
         }
-       else if (noiseMaker.volumeDistance=0)
+        if (noiseMaker.volumeDistance==0)
         {
             return false;
         }
         // If noise is being made then add the volumeDistance to the hearing distance of the AI
-        float totalDistance = noiseMaker.volumeDistance + hearingDistance;
+        float totalDistance = noiseMaker.volumeDistance +hearingDistance;
         // If within the target distance then its true we can hear
-        else if(Vector3.Distance(pawn.transform.position,target.transform.position)<=totalDistance)
+        if(Vector3.Distance(pawn.transform.position,target.transform.position)<=totalDistance)
         {
             return true;
         }

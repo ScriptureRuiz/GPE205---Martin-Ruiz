@@ -69,13 +69,13 @@ public class GameManager : MonoBehaviour
 
         GameObject newEnemyObj = Instantiate(AIEnemyControllerPrefab, Vector3.zero, Quaternion.identity) as GameObject;
 
-        GameObject newAiPawnObj = Instantiate(AITankPrefab,enemySpawnTransform.position,enemySpawnTransform.rotation) as GameObject;
+        GameObject newAiPawnObj = Instantiate(AITankPawnPrefab,enemySpawnTransform.position,enemySpawnTransform.rotation) as GameObject;
 
         AIController newAi = newEnemyObj.GetComponent<AIController>();
-        TankPawn newEnemy = newEnemyObj.GetComponent<TankPawn>();
+        TankPawn newEnemy = newAiPawnObj.GetComponent<TankPawn>();
         newAi.pawn = newEnemy;
 
-        newAi.target = TankPawnPrefab;
+        //newAi.target = player[0];
 
     }
 
@@ -101,6 +101,6 @@ public class GameManager : MonoBehaviour
     public GameObject TankPawnPrefab;
     public GameObject PickupSpawner;
     public GameObject AIEnemyControllerPrefab;
-    public GameObject AITankPrefab;
+    public GameObject AITankPawnPrefab;
     
 }

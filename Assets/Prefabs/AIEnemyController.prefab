@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 269f31ff69eaa304fbf2d0563c643b39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pawn: {fileID: 0}
+  pawn: {fileID: 5627246809274177538, guid: 83f9716d8dda1a541b719769ed3a11d2, type: 3}
   target: {fileID: 0}
   fleeDistance: 0
+  hearingDistance: 0
   currentState: 0
