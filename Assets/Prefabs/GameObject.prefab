@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7810370110807216274}
   - component: {fileID: 7810370110807216275}
+  - component: {fileID: -4276782795920143657}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -44,7 +45,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 296d2b394a985dd4c93093e2b29c068c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpawnTransform: {fileID: 0}
+  playerSpawnTransform: {fileID: 5499951998669017502, guid: 186edba28456923438709f428320a4ab, type: 3}
+  enemySpawnTransform: {fileID: 1105850689044773076, guid: caf9faa74e18f4b4f8231a3615272929, type: 3}
   players: []
+  enemies: []
+  allSpawns: []
   PlayerControllerPrefab: {fileID: 6809172598889237863, guid: a9365bc4d32456a4fa68a94eb7839b74, type: 3}
   TankPawnPrefab: {fileID: 241007890650328572, guid: f5f5d2b4a5162994082adc41994ebf52, type: 3}
+  PickupSpawner: {fileID: 8668754763166447178, guid: 368c6918ca6a5054f9e577e833a74cfc, type: 3}
+  AIEnemyControllerPrefab: {fileID: 3890668212830182130, guid: b83927b40a6a7d440b75f5aaaa823f92, type: 3}
+  AITankPawnPrefab: {fileID: 4816202849827546460, guid: 83f9716d8dda1a541b719769ed3a11d2, type: 3}
+  PawnSpawnPointPrefab: {fileID: 4605513226441044297, guid: e8649a8e793554642a1e2313e7dd6755, type: 3}
+--- !u!114 &-4276782795920143657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7810370110807216272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d0a559dfa84a6f4ebad4f3c4481b469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapSeed: 0
+  spawnPointsPrefab:
+  - {fileID: 5499951998669017503, guid: 186edba28456923438709f428320a4ab, type: 3}
+  - {fileID: 728194546523778781, guid: caf9faa74e18f4b4f8231a3615272929, type: 3}
+  spawnPointTransform:
+  - {fileID: 4605513226441044296, guid: e8649a8e793554642a1e2313e7dd6755, type: 3}
+  pawnSpawnPoint: {fileID: 4605513226441044296, guid: e8649a8e793554642a1e2313e7dd6755, type: 3}
+  roomGridPrefabs:
+  - {fileID: 121816, guid: 41d4243be8ad3a5409422171976de7ff, type: 3}
+  - {fileID: 7333277048814310489, guid: 673db17700fa4ed4d84e72bbb34cd9ac, type: 3}
+  - {fileID: 1751734784824971829, guid: 9cb51829342004e4e992af5f8ba81733, type: 3}
+  - {fileID: 6640640207229324910, guid: 8c7226bb2abf9d44ba0aa57f7d81c639, type: 3}
+  - {fileID: 8003877717448795055, guid: 59e80b184fdc77a428556557de4579f7, type: 3}
+  rows: 5
+  columns: 5

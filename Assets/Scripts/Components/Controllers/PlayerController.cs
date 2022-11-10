@@ -30,7 +30,9 @@ public class PlayerController : MainController
             }
         }
 
-// The following code runs the base "Start" function that is in the parent class.
+       
+
+        // The following code runs the base "Start" function that is in the parent class.
         base.Start();
     }
 

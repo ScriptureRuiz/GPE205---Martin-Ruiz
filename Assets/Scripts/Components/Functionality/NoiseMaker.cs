@@ -26,6 +26,6 @@ public class NoiseMaker : MonoBehaviour
 
     public void MakeNoise()
     {
-
+        
     }
 }

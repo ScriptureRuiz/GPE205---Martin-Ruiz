@@ -155,7 +155,7 @@ MonoBehaviour:
   fireForce: 1000
   damageDealt: 50
   bulletLifespan: 2
-  fireRate: 2
+  fireRate: 4
 --- !u!114 &-3603504373368957075
 MonoBehaviour:
   m_ObjectHideFlags: 0

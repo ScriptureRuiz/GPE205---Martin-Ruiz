@@ -7,20 +7,22 @@ public class AIController : MainController
 {
     // Target that the ai attacks
     public GameObject target;
-    public float fleeDistance;
+    //public float fleeDistance;
     public float hearingDistance;
 
     // All seek() variables
-  /* public Vector3 targetPosition;
-   public Transform targetTransform;
-    public MainPawn targetPawn;
-    public MainController targetController;*/
+    /* public Vector3 targetPosition;
+     public Transform targetTransform;
+      public MainPawn targetPawn;
+      public MainController targetController;*/
 
+
+    
 
     // Stores all the possible states of the A.I as "enums"
     public enum AIState
     {
-        Guard, Patrol, Scan, Chase, Attack, Flee
+        Guard, Patrol, Scan, Chase, Attack, Flee,ChooseTarget
     }
 
     // store the current state of the A.I
@@ -42,8 +44,10 @@ public class AIController : MainController
                 GameManager.instance.enemies.Add(this);
             }
         }
+ 
         base.Start();
     }
+
     // The Decision Maker
     public virtual void MakeDecisions()
     {
@@ -51,14 +55,17 @@ public class AIController : MainController
         {
             case AIState.Guard:
                 DoGuardState();
-               if( CanHear(target));
-                {
-                    ChangeState(AIState.Chase);
-                }
-                //if (IsDistanceLessThan(target, 15))
+                DoChooseTarget();
+                
+
+               //if( CanHear(target));
                // {
                //     ChangeState(AIState.Chase);
                // }
+               if (IsDistanceLessThan(target,20))
+                {
+                    ChangeState(AIState.Chase);
+                }
 
                 break;
 
@@ -89,18 +96,27 @@ public class AIController : MainController
                 {
                     ChangeState(AIState.Chase);
                 }
+                break;
 
                 break;
             case AIState.Flee:
                 DoFleeState();
                 break;
 
+            case AIState.ChooseTarget:
+                DoChooseTarget();
+                
+                break;
+
             default:
                 ChangeState(AIState.Guard);
+                
                 break;
         }
 
     }
+
+
     // Update is called once per frame
     public override void Update()
     {
@@ -118,11 +134,6 @@ public class AIController : MainController
 
 
 
-
-
-    
-
-    
 
     //The following functions Handle the states of the ai
     // Handles changing the state of the A.I
@@ -171,6 +182,12 @@ public class AIController : MainController
         Flee();
     }
 
+    protected virtual void DoChooseTarget()
+    {
+        TargetPlayerOne();
+    }
+
+
 
 
     // These are the Action functions of our states
@@ -178,17 +195,14 @@ public class AIController : MainController
     {
          
     }
-
     protected virtual void Patrol()
     {
 
     }
-
     protected virtual void Scan()
     {
 
     }
-
         //Polymorphism.base- Seeks the target object
     public virtual  void Seek(GameObject target)
     {
@@ -199,7 +213,6 @@ public class AIController : MainController
          //Moves towards the target
         pawn.MoveForward();
     }
-
    /* public void Seek(Vector3 targetPosition)
     {
         // Rotates towards the target position
@@ -228,15 +241,12 @@ public class AIController : MainController
        Seek(targetController.pawn); 
             
 
-   }*/
-
-    // Attacks the target
+   }*/ 
     protected void Attack()
     {
         //Shoot function
         pawn.Shoot();
-    }
-        // Flees the target
+    } 
     protected void Flee()
     {
          /*****    // Finds the distance to the target
@@ -252,10 +262,14 @@ public class AIController : MainController
 
 
     }
+   
+
+
 
 
 
         // These are the Transition methods to our states
+
      protected bool IsDistanceLessThan(GameObject target, float distance)
     {
             /* If the distance between this objects transform position and the targets transform position
@@ -270,11 +284,9 @@ public class AIController : MainController
             return false;
         }
 
-
-
     }
 
-    public bool CanHear(GameObject target)
+     public bool CanHear(GameObject target)
     {
         // Grab the targets noise maker
         NoiseMaker noiseMaker = target.GetComponent<NoiseMaker>();
@@ -301,9 +313,66 @@ public class AIController : MainController
 
     }
 
+     public void TargetPlayerOne()
+    {
+        // Checks for a Game Manager
+        if (GameManager.instance !=null)
+        { 
+            // Checks for a player array instance
+            if (GameManager.instance.players !=null)
+            { 
+                // Counts how many players are within the array
+                if(GameManager.instance.players.Count>0)
+                {
+                   
+                    // Targets the Gameobject of the first player within the array
+                    target=GameManager.instance.players[0].pawn.gameObject;
+                }
+            }
+        }
+    }
+     protected bool HasTarget()
+    {
+        // Returns whether or not we have a target already
+        return target != null;
+    }
 
+   
+    // Targets the nearest tank
+    /*protected void TargetNearestTank()
+    {
+        // This assumes that the first tank is the closest
+        Pawn[] allTanks = FindObjectsOfType<Pawn>();
+        Pawn closestTank = allTanks[0];
+
+        float closestTankDistance = Vector3.Distance(pawn.transform.position, closestTank.transform.position);
+
+        // This for loop function iterates through all the tanks within the tank array
+        foreach(Pawn tank in allTanks)
+        {
+            // Checks to see if this pawn is closer than the closest tank
+            if (Vector3.Distance(pawn.transform.position,tank.transform.position)<= closestTankDistance)
+            {
+                // Its the closest tank
+                closestTank = tank;
+                // Checks the distance to the tank
+                closestTankDistance = Vector3.Distance(pawn.transform.position, closestTank.transform.position);
+            }
+        }
+        // sets the target GameObject to the closest tank
+        target = closestTank.GameObject;
+
+    }*/
+
+    
+ 
+
+    
+
+    // GameManager remove on destroy
     public void OnDestroy()
-    {// Checkes for GameManager
+    {
+    // Checkes for GameManager
         if (GameManager.instance != null)
         {//Checks for players list
             if (GameManager.instance.enemies != null)
@@ -311,9 +380,8 @@ public class AIController : MainController
                 GameManager.instance.enemies.Remove(this);
             }
         }
+       
     }
 
 
-
-
-}   
+}
