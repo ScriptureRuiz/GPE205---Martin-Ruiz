@@ -43,10 +43,11 @@ public class GameManager : MonoBehaviour
         } }
 
 
-    public static void Start()
+    public  void Start()
     {
 
-      
+       SpawnPlayer();
+       SpawnEnemies();
         
 
     }

@@ -38,7 +38,7 @@ public class PickupSpawner : MonoBehaviour
         }
           else
         {
-           //
+            // Otherwise, the object still exists, so postpone the spawn
             nextSpawnTime = Time.time + spawnDelay;
         }
     }

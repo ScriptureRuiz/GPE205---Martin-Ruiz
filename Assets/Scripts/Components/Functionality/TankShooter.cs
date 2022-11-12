@@ -35,7 +35,7 @@ public class TankShooter : Shooter
            1. Prefab, 2.position. rotation
            The position and rotation will be the firepoint.*/
             GameObject newBullet = Instantiate(bulletPrefab, firepointTransform.position, firepointTransform.rotation) as GameObject;
-            Debug.Log(newBullet.name + damageDealt);
+           
 
 
 

@@ -217,42 +217,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1519230375 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7810370110807216272, guid: 5094b2a04a953c04abc5b048406e388a, type: 3}
-  m_PrefabInstance: {fileID: 2051331515}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1519230379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1519230375}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d0a559dfa84a6f4ebad4f3c4481b469, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mapSeed: 0
-  roomGridPrefabs:
-  - {fileID: 121816, guid: 41d4243be8ad3a5409422171976de7ff, type: 3}
-  - {fileID: 7333277048814310489, guid: 673db17700fa4ed4d84e72bbb34cd9ac, type: 3}
-  - {fileID: 1751734784824971829, guid: 9cb51829342004e4e992af5f8ba81733, type: 3}
-  - {fileID: 6640640207229324910, guid: 8c7226bb2abf9d44ba0aa57f7d81c639, type: 3}
-  - {fileID: 8003877717448795055, guid: 59e80b184fdc77a428556557de4579f7, type: 3}
-  rows: 5
-  columns: 5
---- !u!1001 &2051331515
+--- !u!1001 &772935419
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4276782795920143657, guid: 5094b2a04a953c04abc5b048406e388a, type: 3}
+      propertyPath: rows
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -4276782795920143657, guid: 5094b2a04a953c04abc5b048406e388a, type: 3}
+      propertyPath: columns
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -4276782795920143657, guid: 5094b2a04a953c04abc5b048406e388a, type: 3}
+      propertyPath: mapSeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -4276782795920143657, guid: 5094b2a04a953c04abc5b048406e388a, type: 3}
+      propertyPath: spawnComponent
+      value: 
+      objectReference: {fileID: 4605513226441044297, guid: e8649a8e793554642a1e2313e7dd6755, type: 3}
     - target: {fileID: 7810370110807216272, guid: 5094b2a04a953c04abc5b048406e388a, type: 3}
       propertyPath: m_Name
-      value: GameObject
+      value: GameObject (1)
       objectReference: {fileID: 0}
     - target: {fileID: 7810370110807216274, guid: 5094b2a04a953c04abc5b048406e388a, type: 3}
       propertyPath: m_RootOrder
@@ -260,15 +250,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7810370110807216274, guid: 5094b2a04a953c04abc5b048406e388a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.9150085
+      value: -13.369168
       objectReference: {fileID: 0}
     - target: {fileID: 7810370110807216274, guid: 5094b2a04a953c04abc5b048406e388a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -18.217445
+      value: -30.711044
       objectReference: {fileID: 0}
     - target: {fileID: 7810370110807216274, guid: 5094b2a04a953c04abc5b048406e388a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -27.081888
+      value: -38.756104
       objectReference: {fileID: 0}
     - target: {fileID: 7810370110807216274, guid: 5094b2a04a953c04abc5b048406e388a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -298,65 +288,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7810370110807216275, guid: 5094b2a04a953c04abc5b048406e388a, type: 3}
-      propertyPath: pawnPoint
-      value: 
-      objectReference: {fileID: 4605513226441044296, guid: e8649a8e793554642a1e2313e7dd6755, type: 3}
-    - target: {fileID: 7810370110807216275, guid: 5094b2a04a953c04abc5b048406e388a, type: 3}
-      propertyPath: spawnPoint
-      value: 
-      objectReference: {fileID: 4605513226441044296, guid: e8649a8e793554642a1e2313e7dd6755, type: 3}
-    - target: {fileID: 7810370110807216275, guid: 5094b2a04a953c04abc5b048406e388a, type: 3}
-      propertyPath: generateMap
-      value: 
-      objectReference: {fileID: 1519230379}
-    - target: {fileID: 7810370110807216275, guid: 5094b2a04a953c04abc5b048406e388a, type: 3}
-      propertyPath: mapGeneration
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7810370110807216275, guid: 5094b2a04a953c04abc5b048406e388a, type: 3}
-      propertyPath: tankSpawnTransform
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7810370110807216275, guid: 5094b2a04a953c04abc5b048406e388a, type: 3}
-      propertyPath: PawnSpawnPointPrefab
-      value: 
-      objectReference: {fileID: 4605513226441044297, guid: e8649a8e793554642a1e2313e7dd6755, type: 3}
-    - target: {fileID: 7810370110807216275, guid: 5094b2a04a953c04abc5b048406e388a, type: 3}
-      propertyPath: allSpawns.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7810370110807216275, guid: 5094b2a04a953c04abc5b048406e388a, type: 3}
-      propertyPath: spawnPawns.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7810370110807216275, guid: 5094b2a04a953c04abc5b048406e388a, type: 3}
-      propertyPath: spawnPoint.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7810370110807216275, guid: 5094b2a04a953c04abc5b048406e388a, type: 3}
-      propertyPath: allSpawns.Array.data[1]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7810370110807216275, guid: 5094b2a04a953c04abc5b048406e388a, type: 3}
-      propertyPath: allSpawns.Array.data[2]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7810370110807216275, guid: 5094b2a04a953c04abc5b048406e388a, type: 3}
-      propertyPath: spawnPawns.Array.data[0]
-      value: 
-      objectReference: {fileID: 4605513226441044297, guid: e8649a8e793554642a1e2313e7dd6755, type: 3}
-    - target: {fileID: 7810370110807216275, guid: 5094b2a04a953c04abc5b048406e388a, type: 3}
-      propertyPath: spawnPoint.Array.data[0]
-      value: 
-      objectReference: {fileID: 4605513226441044296, guid: e8649a8e793554642a1e2313e7dd6755, type: 3}
-    - target: {fileID: 7810370110807216275, guid: 5094b2a04a953c04abc5b048406e388a, type: 3}
-      propertyPath: pawnSpawnPointPrefab.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7810370110807216275, guid: 5094b2a04a953c04abc5b048406e388a, type: 3}
-      propertyPath: pawnSpawnPointPrefab.Array.data[0]
-      value: 
-      objectReference: {fileID: 4605513226441044297, guid: e8649a8e793554642a1e2313e7dd6755, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5094b2a04a953c04abc5b048406e388a, type: 3}

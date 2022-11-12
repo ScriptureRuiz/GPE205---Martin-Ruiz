@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+// This is the physical object that will be picked up within the game
 public class HealthPickup : MonoBehaviour
 {
     // Holds the data for the powerups our tanks will get when triggered

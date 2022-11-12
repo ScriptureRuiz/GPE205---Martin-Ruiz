@@ -9,12 +9,12 @@ public  class HealthPowerUp : Powerup
 
 
 
-    // Handles what happens when the player picks up a Powerup
+    // Handles what is applied after the player picks up a Powerup
     public override void Apply(PowerupManager target)
     {
         // ToDo function
     }
-    // Handles what happens when the player picks up a Powerup
+    // Handles what happens after the player picks up a Powerup
     public override void Remove(PowerupManager target)
     {
         // To Do function
