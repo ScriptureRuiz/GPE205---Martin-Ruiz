@@ -15,6 +15,7 @@ public class DamageOnHit : MonoBehaviour
     {
         // The health component of the other object is called
         Health otherHealth = other.gameObject.GetComponent<Health>();
+
          // Conditional statement to check if there is a health component
         if (otherHealth != null)
         {

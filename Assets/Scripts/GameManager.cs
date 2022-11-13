@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     public  Transform playerSpawnTransform;
     public  Transform enemySpawnTransform;
 
-    //public Transform pawnSpawnPointTransform;
+   
      // This will run before any start() function in our game
      // Whatever code we write here will run before any object can run their start() function
     private void Awake()
@@ -85,21 +85,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-   
-
-
-
-
-   
-
-
-
-
-
-
-
-
-
+ 
 
 
     // This is a list of serialized <tags> variables that hold our players

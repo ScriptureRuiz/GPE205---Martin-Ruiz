@@ -7,14 +7,9 @@ public class AIController : MainController
 {
     // Target that the ai attacks
     public GameObject target;
-    //public float fleeDistance;
-    public float hearingDistance;
+    
 
-    // All seek() variables
-    /* public Vector3 targetPosition;
-     public Transform targetTransform;
-      public MainPawn targetPawn;
-      public MainController targetController;*/
+    
 
 
     
@@ -56,12 +51,7 @@ public class AIController : MainController
             case AIState.Guard:
                 DoGuardState();
                 DoChooseTarget();
-                
-
-               //if( CanHear(target));
-               // {
-               //     ChangeState(AIState.Chase);
-               // }
+     
                if (IsDistanceLessThan(target,20))
                 {
                     ChangeState(AIState.Chase);
@@ -203,7 +193,7 @@ public class AIController : MainController
     {
 
     }
-        //Polymorphism.base- Seeks the target object
+       // Seeks the target object
     public virtual  void Seek(GameObject target)
     {
  
@@ -213,35 +203,7 @@ public class AIController : MainController
          //Moves towards the target
         pawn.MoveForward();
     }
-   /* public void Seek(Vector3 targetPosition)
-    {
-        // Rotates towards the target position
-        pawn.RotateTowards(targetPosition);
-        // Moves forward
-        pawn.MoveForward();
-    }
-
-        //PolyMorphism-Seeks the target transform
-    public  void Seek(Transform targetTransform)
-    {
-       Seek(targetTransform.transform);
-
-    }
-
-        //Polymorphism- Seeks the target pawn
-    public void Seek(MainPawn targetPawn)
-    {
-
-        Seek(targetPawn.transform);
-    }
-
-    //Polymorphism- seeks target controller
-   public  void Seek(MainController targetController)
-   {
-       Seek(targetController.pawn); 
-            
-
-   }*/ 
+   
     protected void Attack()
     {
         //Shoot function
@@ -249,15 +211,7 @@ public class AIController : MainController
     } 
     protected void Flee()
     {
-         /*****    // Finds the distance to the target
-        Vector3 distanceToTarget = target.transform.position - pawn.transform.position;
-
-             // Finds the vector away from our target by multiplying by -1
-        Vector3 vectorAwayFromTarget = - distanceToTarget;
-            // Find the vector we would travel down in order to flee
-        Vector3 fleeVector = vectorAwayFromTarget.normalized * fleeDistance;
-            // Seeks the fleevector point away from the targets position
-       Seek(targetTransform.transform.position + fleeVector); ******/
+         
 
 
 
@@ -286,32 +240,7 @@ public class AIController : MainController
 
     }
 
-     public bool CanHear(GameObject target)
-    {
-        // Grab the targets noise maker
-        NoiseMaker noiseMaker = target.GetComponent<NoiseMaker>();
-        // Only senses noise if the target has a noiseMaker
-        if (noiseMaker==null)
-        {
-            return false;
-        }
-        if (noiseMaker.volumeDistance==0)
-        {
-            return false;
-        }
-        // If noise is being made then add the volumeDistance to the hearing distance of the AI
-        float totalDistance = noiseMaker.volumeDistance +hearingDistance;
-        // If within the target distance then its true we can hear
-        if(Vector3.Distance(pawn.transform.position,target.transform.position)<=totalDistance)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-
-    }
+    
 
      public void TargetPlayerOne()
     {
@@ -331,41 +260,12 @@ public class AIController : MainController
             }
         }
     }
+
      protected bool HasTarget()
     {
         // Returns whether or not we have a target already
         return target != null;
     }
-
-   
-    // Targets the nearest tank
-    /*protected void TargetNearestTank()
-    {
-        // This assumes that the first tank is the closest
-        Pawn[] allTanks = FindObjectsOfType<Pawn>();
-        Pawn closestTank = allTanks[0];
-
-        float closestTankDistance = Vector3.Distance(pawn.transform.position, closestTank.transform.position);
-
-        // This for loop function iterates through all the tanks within the tank array
-        foreach(Pawn tank in allTanks)
-        {
-            // Checks to see if this pawn is closer than the closest tank
-            if (Vector3.Distance(pawn.transform.position,tank.transform.position)<= closestTankDistance)
-            {
-                // Its the closest tank
-                closestTank = tank;
-                // Checks the distance to the tank
-                closestTankDistance = Vector3.Distance(pawn.transform.position, closestTank.transform.position);
-            }
-        }
-        // sets the target GameObject to the closest tank
-        target = closestTank.GameObject;
-
-    }*/
-
-    
- 
 
     
 

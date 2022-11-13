@@ -31,7 +31,7 @@ public class TankMover : MainMover
     // The parent Rotate() function is overriden.
      public override void Rotate(float turnSpeed)
       {
-        // A Vector3 variable stores a Vector3 value with the turnSpeed parameter *Time.deltaTime
+        // A Vector3 variable stores a Vector3 value with the turnSpeed parameter *Time.deltaTime that rotates along the y axis
          Vector3 rotate = new Vector3(0,turnSpeed*Time.deltaTime);
         // We access the Rigidbody components transform and tell it to rotate, then we pass in the rotate Vector3 variable
         rb.transform.Rotate(rotate);
